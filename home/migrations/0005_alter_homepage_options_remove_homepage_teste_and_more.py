@@ -8,33 +8,44 @@ import wagtail.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailimages', '0024_index_image_file_hash'),
-        ('wagtailcore', '0078_referenceindex'),
-        ('home', '0004_homepage_teste'),
+        ("wagtailimages", "0024_index_image_file_hash"),
+        ("wagtailcore", "0078_referenceindex"),
+        ("home", "0004_homepage_teste"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='homepage',
-            options={'verbose_name': 'Home Page', 'verbose_name_plural': 'Home Pages'},
+            name="homepage",
+            options={"verbose_name": "Home Page", "verbose_name_plural": "Home Pages"},
         ),
         migrations.RemoveField(
-            model_name='homepage',
-            name='teste',
+            model_name="homepage",
+            name="teste",
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='banner_cta',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailcore.page'),
+            model_name="homepage",
+            name="banner_cta",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailcore.page",
+            ),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='banner_image',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.image'),
+            model_name="homepage",
+            name="banner_image",
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="wagtailimages.image",
+            ),
         ),
         migrations.AddField(
-            model_name='homepage',
-            name='banner_subtitle',
+            model_name="homepage",
+            name="banner_subtitle",
             field=wagtail.fields.RichTextField(default=1),
             preserve_default=False,
         ),
